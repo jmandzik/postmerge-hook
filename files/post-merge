@@ -31,7 +31,7 @@ function runCommands(path, config, commands) {
               console.log(stderr);
               process.exit(1);
           } else {
-              console.log('commands: ' + ok);
+              console.log('command['+ cmd +']: ' + stdout);
               process.exit(0);
           }
       });
