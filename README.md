@@ -1,4 +1,1 @@
-postmerge-hook
-==============
-
-Install a post merge hook via npm
+Heavily inspired by https://github.com/nlf/precommit-hook
