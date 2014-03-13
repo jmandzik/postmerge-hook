@@ -2,7 +2,7 @@
   "author": "Justin Mandzik <justin.mandzik@gmail.com> (https://github.com/jmandzik)",
   "name": "postmerge-hook",
   "description": "npm installable post merge hook for git",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "homepage": "https://github.com/jmandzik/postmerge-hook",
   "repository": {
     "url": "https://github.com/jmandzik/postmerge-hook.git"
