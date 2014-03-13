@@ -14,8 +14,8 @@ function getRoot() {
         }
         var path = stderr.trim(),
             config = require(path + '/package.json'),
-            myconfig = config.config && config.config.postmerge ? config.config.postmerge : [];
-        runJshint(stdout, config, myconfig);
+            commands = config.config && config.config.postmerge ? config.config.postmerge : [];
+        runCommands(path, config, commands);
     });
 }
 
