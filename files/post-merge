@@ -1,44 +1,16 @@
 #!/usr/bin/env node
 var exec = require('child_process').exec;
 var cwd = process.cwd();
-var fail = '\x1B[31mfailed!\x1B[39m';
-var ok = '\x1B[32mok\x1B[39m';
-var notfound = '\x1B[33mn/a\x1B[39m (no script found)';
-var exists = require('fs').existsSync;
 
-function getRoot() {
-    exec('git rev-parse --show-toplevel', function (err, stderr, stdout) {
-        if (err) {
-            console.log('failed to find git root');
-            process.exit(1);
-        }
-        var path = stderr.trim(),
-            config = require(path + '/package.json'),
-            commands = config.config && config.config.postmerge ? config.config.postmerge : [];
-        runCommands(path, config, commands);
-    });
-}
+exec('npm install', { cwd: path }, function (err, stdout, stderr) {
+    if (err) {
+        console.log('commands: ' + fail);
+        console.log(stdout);
+        console.log(stderr);
+        process.exit(1);
+    } else {
+        process.exit(0);
+    }
+});
 
-function runCommands(path, config, commands) {
-
-    !commands && process.exit(0);
-
-    commands.forEach(function(cmd){
-      exec(cmd, { cwd: path }, function (err, stdout, stderr) {
-          if (err) {
-              console.log('commands: ' + fail);
-              console.log(stdout);
-              console.log(stderr);
-              process.exit(1);
-          } else {
-              console.log('command['+ cmd +']: ' + stdout);
-          }
-      });
-    });
-
-    process.exit(0);
-
-}
-
-console.log('running post-merge hooks...');
-getRoot();
+console.log('running post-merge npm install...');
